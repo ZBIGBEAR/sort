@@ -4,3 +4,21 @@
 */
 package insert_sort
 
+func StraightInsertSort(arr []int64) []int64{
+	for i:=1;i<len(arr);i++{
+		tmp := arr[i]
+		for j:=i-1;j>=0;j--{
+			if tmp<arr[j]{
+				arr[j+1]=arr[j]
+				if j==0{
+					arr[0]=tmp
+					break
+				}
+			}else{
+				arr[j+1]=tmp
+				break
+			}
+		}
+	}
+	return arr
+}
