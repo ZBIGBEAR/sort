@@ -3,6 +3,7 @@ package memery_sort
 import (
 	"awesomeProject/sort/memery_sort/insert_sort"
 	"awesomeProject/sort/memery_sort/select_sort"
+	"awesomeProject/sort/memery_sort/swap_sort"
 	"awesomeProject/sort/memery_sort/util"
 	"github.com/stretchr/testify/assert"
 	"testing"
@@ -32,6 +33,20 @@ func BenchmarkStraightInsertSort(b *testing.B){
 func BenchmarkSimpleSelectionSort(b *testing.B){
 	for i:=0;i<b.N;i++{
 		result := select_sort.SimpleSelectionSort(util.SortData(arr))
+		assert.Equal(b, expectedResult, result)
+	}
+}
+
+func BenchmarkBubbleSort(b *testing.B){
+	for i:=0;i<b.N;i++{
+		result := swap_sort.BubbleSort(util.SortData(arr))
+		assert.Equal(b, expectedResult, result)
+	}
+}
+
+func BenchmarkFastSort(b *testing.B){
+	for i:=0;i<b.N;i++{
+		result := swap_sort.FastSort(util.SortData(arr))
 		assert.Equal(b, expectedResult, result)
 	}
 }
